@@ -1,14 +1,14 @@
-const express=require("express")
-// Importing all the routes
-const homeroute=require("./routes/main.js")
+require('dotenv').config();
 
+const express = require('express'); 
 
-// Creating express server
-const app=express()
+const app = express();
+const PORT = 3000;
 
-// Handling routes request
-app.use("/",homeroute)
+app.set('view engine', 'ejs');
 
-app.listen((3000),()=>{
-    console.log("Server is Running")
-})
+app.use('/', require('./routes/main'));
+
+app.listen(PORT, ()=>{
+    console.log(`Server listening at port ${PORT}`);
+});
